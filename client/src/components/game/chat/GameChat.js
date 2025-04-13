@@ -9,27 +9,38 @@ const GameChat = ({ room, user }) => {
     const [input, setInput] = useState('');
 
     useEffect(() => {
-        const socket = io();
-        setSocket(socket);
+        const newSocket = io();
+        setSocket(newSocket);
 
         const audio = new Audio(messageSound);
 
-        socket.emit('joinRoom', room);
+        newSocket.emit('joinRoom', room);
 
-        socket.on('message', (message) => {
+        newSocket.on('message', (data) => {
             audio.play();
-            setMessages(prevMessages => [...prevMessages, message.message]);
+            setMessages(prevMessages => [...prevMessages, {
+                sender: data.sender,
+                message: data.message
+            }]);
         });
 
         return () => {
-            socket.disconnect();
+            newSocket.disconnect();
         };
     }, [room]);
 
     const sendMessage = () => {
+        const sender = JSON.parse(localStorage.getItem('user')).username;
         if (input.trim() !== '' && socket) {
-            socket.emit('message', { message: input, room: room });
-            setMessages(prevMessages => [...prevMessages, input]);
+            const messageData = {
+                room,
+                message: input,
+                sender
+            };
+
+            socket.emit('message', messageData);
+
+            setMessages(prevMessages => [...prevMessages, messageData]);
             setInput('');
         }
     };
@@ -37,8 +48,10 @@ const GameChat = ({ room, user }) => {
     return (
         <div className="chat">
             <div className="chatMessages">
-                {messages.map((message, index) => (
-                    <div key={index} className="message">{message}</div>
+                {messages.map((msg, index) => (
+                    <div key={index} className="message">
+                        <strong>{msg.sender}:</strong> {msg.message}
+                    </div>
                 ))}
             </div>
             <div className="chatInput">

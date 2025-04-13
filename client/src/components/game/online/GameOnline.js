@@ -221,12 +221,13 @@ const GameOnline = ({ room, user, tag }) => {
         </div>
       </div>
       <h2 className='opponent'>
-        {player.toUpperCase()}:{'  '}
-        {tag === 'x' ? <img src={cross_icon} alt="Cross Icon" /> : <img src={circle_icon} alt="Circle Icon" />}{'  '}
-        <strong>vs</strong>{' '}
-        {opponent.toUpperCase()}:{'  '}
+        {player.toUpperCase()}:&nbsp;
+        {tag === 'x' ? <img src={cross_icon} alt="Cross Icon" /> : <img src={circle_icon} alt="Circle Icon" />}
+        &nbsp;&nbsp;<strong>vs</strong>&nbsp;&nbsp;
+        {opponent.toUpperCase()}:&nbsp;
         {tag === 'x' ? <img src={circle_icon} alt="Circle Icon" /> : <img src={cross_icon} alt="Cross Icon" />}
       </h2>
+
       { win &&  <button className='reset' onClick={() => { navigate('/') }}>Exit Game</button>}
       <GameChat room={room} user={user} />
     </div>
