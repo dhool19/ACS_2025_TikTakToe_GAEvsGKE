@@ -1,0 +1,110 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.profile-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* responsive for smaller screens */
+}
+
+.profile-card,
+.Chart {
+  background-color: #1f3540;
+  border-radius: 20px;
+  padding: 20px;
+  width: 500px;
+  height: 500px;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Profile Picture */
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Info */
+.profile-info {
+  text-align: center;
+}
+
+.profile-info h1 {
+  font-size: 2em;
+  margin: 20px 0 10px;
+}
+
+.profile-info p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.score {
+  font-size: 1.1em;
+  background-color: #2980b9;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Edit Button */
+.edit-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Close icon */
+.close-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+/* Chart wrapper styling */
+.Chart {
+  position: relative;
+}
+
+.Chart canvas {
+  width: 400px !important;
+  height: 400px !important;
+  display: block;
+  margin: 0 auto;
+}
