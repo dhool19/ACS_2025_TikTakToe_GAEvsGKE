@@ -115,6 +115,7 @@ const gameLog = async (req, res) => {
 const getGameLog = async (req, res) => {
     const { username } = req.body;
 
+    // console.log('Username:', username);
     try {
         const gameLog = await Game.aggregate([
             {
@@ -150,7 +151,7 @@ const getGameLog = async (req, res) => {
             }
         ]);
 
-        console.log(gamelog)
+        // console.log(gamelog)
         res.status(200).json({ gameLog });
     } catch (error) {
         res.status(400).json({ error: error.message });
