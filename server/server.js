@@ -5,12 +5,15 @@ const { Server } = require("socket.io");
 require('dotenv').config();
 const UserRoutes = require('./routes/UserRoutes');
 const socket = require('./socket');
+const cors = require('cors');
 
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
 socket(io);
+
+app.use(cors());
 
 app.use(express.json());
 app.use((req, res, next) => {
