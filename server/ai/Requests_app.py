@@ -6,7 +6,10 @@ import json
 # level: 4> hard
 # level: 10> hard
 
-BASE = "http://127.0.0.1:5000/"
+# BASE = "http://127.0.0.1:5000/"
+#BASE = "https://ai-service-dot-direct-obelisk-442810-f7.ey.r.appspot.com/"
+
+BASE = "https://ai-service-dot-direct-obelisk-442810-f7.ey.r.appspot.com/"
 
 response = requests.post(BASE + "Offline/Start", headers={'Content-Type': 'application/json'}, data=json.dumps({'level': 0.1, 'index': 0}))
 res = response.json()

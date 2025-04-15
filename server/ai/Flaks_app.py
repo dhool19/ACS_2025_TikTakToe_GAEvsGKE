@@ -85,6 +85,9 @@ class Start(Resource):
     
 
 api.add_resource(Start, "/Offline/Start")   # {{"level": 0.2}, {"index": 0}}
+@app.route("/")
+def hello():
+    return "✅ Flask AI Service is running!"
 
 if __name__ == '__main__':
     app.run(debug=True)

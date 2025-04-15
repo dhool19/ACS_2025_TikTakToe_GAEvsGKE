@@ -1,0 +1,14 @@
+runtime: custom
+env: flex
+service: ai-service
+
+entrypoint: gunicorn -b :8080 Flaks_app:app
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
+
