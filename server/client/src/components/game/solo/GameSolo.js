@@ -7,8 +7,28 @@ import PlaySound from '../../../sounds/play.mp3'
 import LoseSound from '../../../sounds/lose.mp3'
 import WinSound from '../../../sounds/won.mp3'
 
+
 // const apiUrl = 'http://127.0.0.1:5000';
-const apiUrl = "https://ai-service-dot-direct-obelisk-442810-f7.ey.r.appspot.com/"
+
+const GKE_API = "http://34.42.130.108";
+const GAE_API = "https://acs-project-458806.uc.r.appspot.com";
+let apiUrl = GKE_API;
+const checkServer = async () => {
+  try {
+    const response = await fetch(`${GKE_API}/health`);
+    if (response.ok) {
+      console.log("✅ Using GKE AI service");
+      apiUrl = GKE_API;
+    } else {
+      throw new Error("GKE not healthy");
+    }
+  } catch (error) {
+    console.warn("❌ GKE AI service not responding, falling back to GAE");
+    apiUrl = GAE_API;
+  }
+};
+
+checkServer();
 
 
 const GameSolo = ({ difficulty }) => {
@@ -17,7 +37,7 @@ const GameSolo = ({ difficulty }) => {
     const [win, setWin] = useState(false);
     const [draw, setDraw] = useState(false);
     const [end, setEnd] = useState(false);
-    const [gameStarted, setGameStarted] = useState(false); // State to track if the game has started
+    const [gameStarted, setGameStarted] = useState(false); 
     const titleRef = useRef(null);
     const navigate = useNavigate();
     const playSound = new Audio(PlaySound)

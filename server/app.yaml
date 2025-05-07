@@ -1,15 +1,12 @@
 runtime: nodejs18
-service: web-frontend
+env: standard
+service: frontend-service
 instance_class: F4
- 
+
+automatic_scaling:
+  max_instances: 10
+
 env_variables:
   MONGO_URL: mongodb+srv://bilalhussain199682:Fe5pajztuLM16d3t@mongocrm.yxcn1rw.mongodb.net/TicTacToe_db?retryWrites=true&w=majority&appName=MongoCRM
   SECRET: tictactoe
   NODE_ENV: production
- 
-health_check:
-  enable_health_check: true
-  check_interval_sec: 60
-  timeout_sec: 20
-  unhealthy_threshold: 5
-  healthy_threshold: 3

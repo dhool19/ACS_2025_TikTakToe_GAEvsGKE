@@ -96,8 +96,6 @@ gameSchema.statics.log = async function(username, score, won, opponent) {
     return game;
 }
 
-
-
 // Exporting the Mongoose models with the defined schemas
 module.exports = {
     User: mongoose.model('User', userSchema),

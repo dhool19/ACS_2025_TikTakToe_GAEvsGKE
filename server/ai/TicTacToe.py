@@ -64,6 +64,18 @@ class Board():
         # By default it's not a win
         return False
     
+    # ✅ New: check win for any given player symbol
+    def is_win_for(self, player_symbol):
+        board = self.state.reshape((3, 3))
+        for i in range(3):
+            if (board[i, :] == player_symbol).all() or \
+               (board[:, i] == player_symbol).all():
+                return True
+        if (board.diagonal() == player_symbol).all() or \
+           (np.flip(board, axis=1).diagonal() == player_symbol).all():
+            return True
+        return False
+
     # check if the state is a draw
     def is_draw(self):
         #check if the game is not a win

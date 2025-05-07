@@ -33,7 +33,6 @@ const GameOnline = ({ room, user, tag }) => {
     setOpponent(arg)
   });
     socket.current.emit('handShake', {opp: player, room: room});
-    // socket.current.emit('joinRoom', room);
     console.log(room, opponent)
 
     socket.current.on("userLeft", (arg) => {
@@ -143,11 +142,7 @@ const GameOnline = ({ room, user, tag }) => {
 
   const won = (winner) => {
     setLock(true);
-    // if (winner === "x") {
-    //   titleRef.current.innerHTML = `Congratulations: <img src='${cross_icon}'> Wins`;
-    // } else {
-    //   titleRef.current.innerHTML = `Congratulations: <img src='${circle_icon}'> Wins`;
-    // }
+
     setWin(true)
     const score = Math.floor(Math.random() * 6) + 25;
     if (winner === tag) {
@@ -158,7 +153,6 @@ const GameOnline = ({ room, user, tag }) => {
       winSound.play()
     } else {
       updateScore(-score, false);
-      // gameLog(false)
       titleRef.current.innerHTML = `Oops, you lost! 😞`;
       titleRef2.current.innerHTML = `You lost -${score} points. Keep trying!`;
       loseSound.play()

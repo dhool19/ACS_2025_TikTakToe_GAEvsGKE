@@ -1,14 +1,12 @@
-runtime: custom
-env: flex
-service: ai-service
+#app.yaml for GAE
+runtime: python39
+env: standard
+service: default
 
-entrypoint: gunicorn -b :8080 Flaks_app:app
+entrypoint: gunicorn -b :8080 Flask_app:app --workers 8 --threads 4 --timeout 120 --preload
 
-manual_scaling:
-  instances: 1
+automatic_scaling:
+  max_instances: 5
 
-resources:
-  cpu: 1
-  memory_gb: 1
-  disk_size_gb: 10
-
+env_variables:
+  STRESS_MODE: on

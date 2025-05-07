@@ -1,0 +1,16 @@
+config:
+  target: "https://acs-project-458806.uc.r.appspot.com/"
+  phases:
+    - duration: 120         
+      arrivalCount: 210     
+  defaults:
+    timeout: 10000           
+
+scenarios:
+  - flow:
+      - post:
+          url: "/Offline/Start"
+          
+          json:
+            level: 0.2
+      - think: 1             

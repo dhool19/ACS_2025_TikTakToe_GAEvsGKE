@@ -1,0 +1,18 @@
+config:
+  target: "http://34.42.130.108"
+  phases:
+    - duration: 300
+      arrivalCount: 210
+  defaults:
+    timeout: 600000
+  http:
+    pool: 1000 
+
+scenarios:
+  - flow:
+      - post:
+          url: "/Offline/Start"
+          json:
+            level: 0.2
+      - think: 1   
+

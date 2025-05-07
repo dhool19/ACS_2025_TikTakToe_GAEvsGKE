@@ -8,7 +8,7 @@ const GameLog = () => {
     useEffect(() => {
         const fetchGameLog = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/user/getGameLog', {
+                const response = await fetch('/api/user/getGameLog', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ username: JSON.parse(localStorage.getItem('user')).username})

@@ -1,5 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Prevent bad files from being included in Docker build
+Icon?
+.DS_Store
+Thumbs.db
+.keep
+
 # dependencies
 /node_modules
 /.pnp

@@ -54,7 +54,6 @@ h2.log {
 .user-info-log p,
 .opponent-info-log p {
     margin: 5px 100px;
-    /* Add margin to top and bottom */
 }
 
 .outcome-log {
